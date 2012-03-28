@@ -1,0 +1,23 @@
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+<?php if ($this->headline): ?>
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+
+<?php if ($this->message): ?>
+<div class="message"><p><?php echo $this->message; ?></p></div>
+<?php endif; ?>
+
+<?php if (count($this->sections)): ?>
+	<ul>
+	<?php foreach($this->sections as $key=>$section): ?>
+		<li class="<?php echo $section['class']; ?>">
+			<?php if (strlen($section['href'])): ?><a href="<?php echo $section['href']; ?>" title="<?php echo $section['title']; ?>"><?php endif; ?>
+			<span><?php echo $section['name']; ?></span>
+			<?php if (strlen($section['href'])): ?></a><?php endif; ?>
+		</li>
+	<?php endforeach; ?>
+	</ul>
+<?php endif; ?>
+
+</div>

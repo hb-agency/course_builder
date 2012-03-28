@@ -1,0 +1,26 @@
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<?php if ($this->headline): ?>
+
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+<?php if( count($this->courses) ): ?>
+<table summary="Course List" cellpadding="0" cellspacing="0" border="0">
+<?php foreach($this->courses as $course): ?>
+<tr class="cbcourse <?php echo $course['class']; ?>">
+		<td class="<?php echo $course['href'] ? 'hlink ' : '' ; ?>element col_0"><?php echo $course['label']; ?></td>
+		<td class="col_1"><a href="<?php echo $course['href']; ?>" title="<?php echo $course['resume']; ?>"><?php echo $course['resume']; ?></a></td>
+		<td class="col_2">
+			<?php if($course['restarthref']): ?><a href="<?php echo $course['restarthref']; ?>" title="<?php echo $course['restart']; ?>"><?php echo $course['restart']; ?></a><?php endif; ?>
+		</td>
+		<td class="col_3">
+			<?php if($course['reviewhref']): ?><a href="<?php echo $course['reviewhref']; ?>" title="<?php echo $course['review']; ?>"><?php echo $course['review']; ?></a><?php endif; ?>
+		</td>
+		<td class="col_4">
+			<?php if($course['certificatehref']): ?><a href="<?php echo $course['certificatehref']; ?>" title="<?php echo $course['certificate']; ?>"><?php echo $course['certificate']; ?></a><?php endif; ?>
+		</td>
+		
+</tr>
+<?php endforeach; ?>
+</table>
+<?php endif; ?>
+</div>

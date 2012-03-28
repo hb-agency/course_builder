@@ -1,0 +1,15 @@
+<div class="page">
+	<?php echo $this->segments; ?>
+	<form action="<?php echo $this->action; ?>" id="<?php echo $this->formId; ?>" name="cb<?php echo rand(); ?>" method="post" enctype="<?php echo $this->enctype; ?>">
+	<div class="formbody">
+	<input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formSubmit; ?>" />
+	<input type="hidden" name="PAGE_ID" value="<?php echo $this->pageID; ?>" />
+	<input type="hidden" name="SECTION_ID" value="<?php echo $this->sectionID; ?>" />
+	<input type="hidden" name="PARENT_DATA" value="<?php echo $this->parentID; ?>" />
+	<?php foreach($this->buttons as $button): ?>
+		<input type="submit" class="submit <?php echo $button['name']; ?>" name="<?php echo $button['name']; ?>" value="<?php echo $button['label']; ?>" />
+	<?php endforeach; ?>
+	<div class="clear"></div>
+	</form>
+	</div>
+</div>

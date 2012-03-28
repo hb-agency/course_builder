@@ -1,0 +1,21 @@
+<div class="failure">
+	<h2><?php echo $this->headline; ?></h2>
+	<div class="message">
+		<p><a href="<?php echo $this->href; ?>"><?php echo $this->message; ?></a></p>
+	</div>
+	
+	<?php if ($this->showCourseNav): ?>
+	{{insert_module::116}}
+	<?php endif; ?>
+	
+	<?php if (count($this->wrong)): ?>
+	
+	<p><?php echo $this->wrongMsg; ?></p>		
+	<?php if (is_array($this->wrong)): foreach ($this->wrong as $wronganswer): ?>
+		<div class="wronganswer_container">
+			<p><span class="label"><?php echo $this->question_label; ?>:</span>&nbsp;&nbsp;&nbsp;<?php echo $wronganswer['question']; ?></p>
+			<p><span class="label"><?php echo $this->response_label; ?>:</span>&nbsp;&nbsp;&nbsp;<?php echo $wronganswer['response']; ?></p>
+			<p><span class="label"><?php echo $this->correct_label; ?>:</span>&nbsp;&nbsp;&nbsp;<?php echo $wronganswer['correct']; ?></p>
+		</div>	
+	<?php endforeach; endif; endif; ?>
+</div>

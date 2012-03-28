@@ -1,0 +1,51 @@
+<div class="page">
+	<form action="<?php echo $this->action; ?>" id="<?php echo $this->formId; ?>" name="iso<?php echo rand(); ?>" method="post" enctype="<?php echo $this->enctype; ?>">
+	<div class="formbody">
+	<input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formSubmit; ?>" />
+	<input type="hidden" name="PAGE_ID" value="<?php echo $this->pageID; ?>" />
+	<input type="hidden" name="SECTION_ID" value="<?php echo $this->sectionID; ?>" />
+	<input type="hidden" name="PARENT_DATA" value="<?php echo $this->parentID; ?>" />
+	
+<?php if ($this->showCourseNav): ?>
+<div class="navigation_container">
+<?php echo $this->courseNav; ?>
+</div>
+<?php endif; ?>
+<div class="continue_container<?php if ($this->showCourseNav): ?> marginright<?php endif; ?>">
+	<div class="intro"><?php echo $this->text; ?></div>
+	<?php foreach($this->questions as $objWidget): ?>
+		<div class="question">
+			<div class="title"><?php echo $objWidget->title; ?><?php if ($objWidget->mandatory): ?><span class="mandatory">*</span><?php endif; ?></div>
+			<?php if (strlen($objWidget->help)): ?><div class="help"><?php echo $objWidget->help; ?></div><?php endif; ?>
+				
+			<?php if (strlen($objWidget->question)): ?><div class="text"><?php echo $objWidget->question; ?></div><?php endif; ?>
+			<div class="widget <?php echo $objWidget->class; ?>">
+				<?php echo $objWidget->generateLabel(); ?> <?php echo $objWidget->generateWithError(); ?>
+			</div>
+		</div>
+	<?php endforeach; ?>
+	
+	<?php if (strlen($this->score)): ?>
+	<div class="score_container">
+	<p class="score">Your Score: <?php echo $this->score; ?></p>
+	</div>
+	<?php endif; ?>	
+	
+	<?php foreach($this->buttons as $button): ?>
+		<input type="submit" class="submit <?php echo $button['name']; ?>" name="<?php echo $button['name']; ?>" value="<?php echo $button['label']; ?>" />
+	<?php endforeach; ?>
+	<?php if (count($this->wrong)): ?>
+	
+	<p><?php echo $this->wrongMsg; ?></p>		
+	<?php if (is_array($this->wrong)): foreach ($this->wrong as $wronganswer): ?>
+		<div class="wronganswer_container">
+			<p><span class="label"><?php echo $this->question_label; ?>:</span>&nbsp;&nbsp;&nbsp;<?php echo $wronganswer['question']; ?></p>
+			<p><span class="label"><?php echo $this->response_label; ?>:</span>&nbsp;&nbsp;&nbsp;<?php echo $wronganswer['response']; ?></p>
+			<p><span class="label"><?php echo $this->correct_label; ?>:</span>&nbsp;&nbsp;&nbsp;<?php echo $wronganswer['correct']; ?></p>
+		</div>	
+	<?php endforeach; endif; endif; ?>
+</div>	
+	<div class="clear"></div>
+	</div>
+	</form>
+</div>

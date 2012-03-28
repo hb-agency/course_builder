@@ -1,0 +1,12 @@
+<div class="page">
+	<?php echo $this->segments; ?>
+	<form action="<?php echo $this->action; ?>" id="<?php echo $this->formId; ?>" name="cb<?php echo rand(); ?>" method="post" enctype="<?php echo $this->enctype; ?>">
+	<div class="formbody">
+	<input type="hidden" name="FORM_SUBMIT" value="<?php echo $this->formSubmit; ?>" />
+	<?php foreach($this->buttons as $button): ?>
+		<input type="submit" class="submit <?php echo $button['name']; ?>" name="<?php echo $button['name']; ?>" value="<?php echo $button['label']; ?>" />
+	<?php endforeach; ?>
+	<div class="clear"></div>
+	</form>
+	</div>
+</div>
